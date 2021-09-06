@@ -19,7 +19,11 @@ def solution(l):
 
         arr = []
         # print(xs)
-        for i in range(len(xs)):
+
+        # Can optimize to loop from n -> 0
+        i = len(xs) - 1
+        while i >= 0:
+
             l = [x for x in xs]
             del l[i]
 
@@ -27,12 +31,23 @@ def solution(l):
             t = recursive(l)
             arr.append(t)
 
+            i = i - 1
+        # for i in range(len(xs)):
+        #     l = [x for x in xs]
+        #     del l[i]
+
+        #     # print(l)
+        #     t = recursive(l)
+        #     arr.append(t)
+
         m = max(arr)
         memory[key] = m
         return m
 
     l.sort(reverse=True)
-    return recursive(l)
+    xx = recursive(l)
+    print(memory)
+    return xx
 
 def find(xs):
     for x in xs:
